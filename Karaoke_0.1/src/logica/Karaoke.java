@@ -7,14 +7,7 @@ public class Karaoke {
 	private Cancion cancionActual;
 	private ArrayList<Genero> listsGeneros;
 	
-	public ArrayList<Genero> getListsGeneros() {
-		return listsGeneros;
-	}
-
-	public void setListsGeneros(ArrayList<Genero> listsGeneros) {
-		this.listsGeneros = listsGeneros;
-	}
-
+	
 	public Karaoke() {
 		
 	}
@@ -27,6 +20,13 @@ public class Karaoke {
 		this.cancionActual = cancionActual;
 	}
 	
-	
+	public ArrayList<Genero> getListsGeneros() {
+		return listsGeneros;
+	}
+
+	public void setListsGeneros(ArrayList<Genero> listsGeneros) {
+		this.listsGeneros = listsGeneros;
+	}
+
 	
 }
