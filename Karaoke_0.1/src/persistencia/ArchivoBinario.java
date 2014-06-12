@@ -4,42 +4,53 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
 
+import logica.Autor;
+import logica.Cancion;
+import logica.Genero;
+
 public class ArchivoBinario {
 
-	private File file;
-	private FileOutputStream fileOutputStream;
 	private FileInputStream fileInputStream;
+	private FileOutputStream fileOutputStream;
 	
-	
-	public void crearArchivo() {
-		JFileChooser jf = new JFileChooser("src/Files");
-		int opcion = jf.showSaveDialog(null);
-		if (opcion == JFileChooser.APPROVE_OPTION) {
-			file = new File(jf.getSelectedFile().getPath());
-		}
-	}
-	
-	public void escribirArchivo() throws IOException {
+	private ObjectInputStream objectInputStream;
+	private ObjectOutputStream objectOutputStream;
+	private File file;
+
+	public void escribir(Genero genero) throws IOException {
+		file = new File("./src/Files/Generos.dd");
 		fileOutputStream = new FileOutputStream(file);
-		for (int i = 0; i < 256; i++) {
-			fileOutputStream.write(i);			
-		}
+		objectOutputStream = new ObjectOutputStream(fileOutputStream);
+		
+		objectOutputStream.writeObject(genero);
+		objectOutputStream.close();
+	}
+
+	
+	public void leer() throws IOException, ClassNotFoundException {
+		file = new File("./src/Files/Generos.dd");
+		fileInputStream = new FileInputStream(file);
+		objectInputStream = new ObjectInputStream(fileInputStream);
+		
+		Genero genero;
+		genero = (Genero)objectInputStream.readObject();
+		System.out.println(genero.getNombre()+" , "+genero.getListaAutores());
+		objectInputStream.close();
 	}
 	
-	public void leerArchivo() throws IOException {
-		JFileChooser jf = new JFileChooser("src/files");
-		int opcion = jf.showSaveDialog(null);
-		if (opcion == JFileChooser.APPROVE_OPTION) {
-			file = new File(jf.getSelectedFile().getPath());
-		} 
-		
-		fileInputStream = new FileInputStream(file);
-		int c;
-		while((c = fileInputStream.read()) != -1){
-			 System.out.println(c);
+	public static void main(String[] args) throws ClassNotFoundException {
+		ArchivoBinario archivoBinarioClase = new ArchivoBinario();
+		ArrayList<Autor> listaAutores = new ArrayList<>();
+		try {
+			archivoBinarioClase.leer();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	

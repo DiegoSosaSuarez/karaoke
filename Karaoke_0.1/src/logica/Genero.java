@@ -1,9 +1,14 @@
 package logica;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Genero {
+public class Genero implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private ArrayList<Autor> listaAutores;
 	private String imagenGenero;
@@ -11,6 +16,16 @@ public class Genero {
 	public Genero() {
 
 	}
+
+	
+	
+	public Genero(String nombre, ArrayList<Autor> listaAutores) {
+		super();
+		this.nombre = nombre;
+		this.listaAutores = listaAutores;
+	}
+
+
 
 	public String getNombre() {
 		return nombre;
