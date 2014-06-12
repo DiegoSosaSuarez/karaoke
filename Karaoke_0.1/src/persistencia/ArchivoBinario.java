@@ -15,8 +15,7 @@ public class ArchivoBinario {
 	
 	
 	public void crearArchivo() {
-		JFileChooser jf = new JFileChooser("src/files");
-//		int opcion = jf.showOpenDialog(null);
+		JFileChooser jf = new JFileChooser("src/Files");
 		int opcion = jf.showSaveDialog(null);
 		if (opcion == JFileChooser.APPROVE_OPTION) {
 			file = new File(jf.getSelectedFile().getPath());
@@ -32,7 +31,6 @@ public class ArchivoBinario {
 	
 	public void leerArchivo() throws IOException {
 		JFileChooser jf = new JFileChooser("src/files");
-//		int opcion = jf.showOpenDialog(null);
 		int opcion = jf.showSaveDialog(null);
 		if (opcion == JFileChooser.APPROVE_OPTION) {
 			file = new File(jf.getSelectedFile().getPath());
@@ -45,16 +43,5 @@ public class ArchivoBinario {
 		}
 	}
 	
-	public static void main(String[] args) {
-		ArchivoBinario archivoBinario = new ArchivoBinario();
-		archivoBinario.crearArchivo();
-		try {
-//			archivoBinario.escribirArchivo();
-			archivoBinario.leerArchivo();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 	
 }
