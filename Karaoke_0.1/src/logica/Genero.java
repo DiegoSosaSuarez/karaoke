@@ -14,17 +14,20 @@ public class Genero implements Serializable{
 	private String imagenGenero;
 
 	public Genero() {
-
+		listaAutores = new ArrayList<>();
 	}
 
 	
 	
-	public Genero(String nombre, ArrayList<Autor> listaAutores) {
+	public Genero(String nombre) {
 		super();
 		this.nombre = nombre;
-		this.listaAutores = listaAutores;
+		
 	}
 
+	public void agregarAutor(Autor autor){
+		listaAutores.add(autor);
+	}
 
 
 	public String getNombre() {

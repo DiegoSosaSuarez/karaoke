@@ -1,15 +1,25 @@
 package logica;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Karaoke {
+public class Karaoke implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Cancion cancionActual;
 	private ArrayList<Genero> listsGeneros;
 	
 	
 	public Karaoke() {
 		
+		listsGeneros = new ArrayList<>();
+	}
+	
+	public void agregarGenero(Genero genero){
+		listsGeneros.add(genero);
 	}
 
 	public Cancion getCancionActual() {
