@@ -29,7 +29,7 @@ public class ArchivoBinario {
 	}
 	
 	public void escribirGenero(Karaoke karaoke) throws IOException {
-		file = new File("./src/Files/Generos.ds");
+		file = new File("./src/Files/Generos.dd");
 		fileOutputStream = new FileOutputStream(file);
 		objectOutputStream = new ObjectOutputStream(fileOutputStream);
 		objectOutputStream.writeObject(karaoke);
@@ -37,7 +37,7 @@ public class ArchivoBinario {
 	}
 
 	public void escribirAutor(Genero genero) throws IOException {
-		file = new File("./src/Files/Autores.ds");
+		file = new File("./src/Files/Autores.dd");
 		fileOutputStream = new FileOutputStream(file);
 		objectOutputStream = new ObjectOutputStream(fileOutputStream);
 		objectOutputStream.writeObject(genero);
@@ -45,7 +45,7 @@ public class ArchivoBinario {
 	}
 	
 	public void leerGeneros() throws IOException, ClassNotFoundException {
-		file = new File("./src/Files/Generos.ds");
+		file = new File("./src/Files/Generos.dd");
 		fileInputStream = new FileInputStream(file);
 		objectInputStream = new ObjectInputStream(fileInputStream);
 		Karaoke karaoke;
@@ -57,13 +57,13 @@ public class ArchivoBinario {
 		objectInputStream.close();
 	}
 	public void leerAutores() throws IOException, ClassNotFoundException {
-		file = new File("./src/Files/Autores.ds");
+		file = new File("./src/Files/Autores.dd");
 		fileInputStream = new FileInputStream(file);
 		objectInputStream = new ObjectInputStream(fileInputStream);
 		Genero genero;
 		genero = (Genero)objectInputStream.readObject();
-		for (Autor nombreAutor : genero.getListaAutores()) {
-			System.out.println(nombreAutor.getNombre());
+		for (Autor autor : genero.getListaAutores()) {
+			System.out.println(autor.getNombre()+" --- "+autor.getGenero().getNombre());
 		}
 		
 		objectInputStream.close();
@@ -84,21 +84,21 @@ public class ArchivoBinario {
 		karaoke.agregarGenero(new Genero("Cumbia"));
 		
 		Genero autor = new Genero();
-		autor.agregarAutor(new Autor("Juan Fernando Velasco"));
-		autor.agregarAutor(new Autor("Jorge Velosa"));
-		autor.agregarAutor(new Autor("Andres Cepeda"));
-		autor.agregarAutor(new Autor("Los inquietos"));
-		autor.agregarAutor(new Autor("Silvestr Dangond"));
-		autor.agregarAutor(new Autor("Shakira"));
-		autor.agregarAutor(new Autor("Juanes"));
-		autor.agregarAutor(new Autor("Diomedes Diaz"));
+		autor.agregarAutor(new Autor("Juan Fernando Velasco", karaoke.getListsGeneros().get(3)));
+		autor.agregarAutor(new Autor("Jorge Velosa", karaoke.getListsGeneros().get(4)));
+		autor.agregarAutor(new Autor("Andres Cepeda", karaoke.getListsGeneros().get(3)));
+		autor.agregarAutor(new Autor("Los inquietos", karaoke.getListsGeneros().get(0)));
+		autor.agregarAutor(new Autor("Silvestr Dangond", karaoke.getListsGeneros().get(0)));
+		autor.agregarAutor(new Autor("Shakira", karaoke.getListsGeneros().get(4)));
+		autor.agregarAutor(new Autor("Juanes", karaoke.getListsGeneros().get(4)));
+		autor.agregarAutor(new Autor("Diomedes Diaz", karaoke.getListsGeneros().get(0)));
 		
 		
 		try {
-			//archivoBinarioClase.escribirAutor(autor);
+//			archivoBinarioClase.escribirGenero(karaoke);
+//			archivoBinarioClase.escribirAutor(autor);
 			archivoBinarioClase.leerAutores();
-			//archivoBinarioClase.leerGeneros();
-			//archivoBinarioClase.escribirGenero(karaoke);
+//			archivoBinarioClase.leerGeneros();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
