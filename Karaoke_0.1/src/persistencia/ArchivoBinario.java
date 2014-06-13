@@ -56,6 +56,18 @@ public class ArchivoBinario {
 		
 		objectInputStream.close();
 	}
+	public void leerAutores() throws IOException, ClassNotFoundException {
+		file = new File("./src/Files/Generos.ds");
+		fileInputStream = new FileInputStream(file);
+		objectInputStream = new ObjectInputStream(fileInputStream);
+		Genero genero;
+		genero = (Genero)objectInputStream.readObject();
+		for (Autor nombreAutor : genero.getListaAutores()) {
+			System.out.println(nombreAutor.getNombre());
+		}
+		
+		objectInputStream.close();
+	}
 	
 	public static void main(String[] args) throws ClassNotFoundException {
 		ArchivoBinario archivoBinarioClase = new ArchivoBinario();
@@ -74,11 +86,15 @@ public class ArchivoBinario {
 		autor.agregarAutor(new Autor("Jorge Velosa"));
 		autor.agregarAutor(new Autor("Andres Cepeda"));
 		autor.agregarAutor(new Autor("Los inquietos"));
-		autor.agregarAutor(new Autor("EL Binomio"));
+		autor.agregarAutor(new Autor("Silvestr Dangond"));
+		autor.agregarAutor(new Autor("Shakira"));
+		autor.agregarAutor(new Autor("Juanes"));
+		autor.agregarAutor(new Autor("Diomedes Diaz"));
 		
 		
 		try {
-			archivoBinarioClase.escribirAutor(autor);
+			//archivoBinarioClase.escribirAutor(autor);
+			archivoBinarioClase.leerAutores();
 			//archivoBinarioClase.leerGeneros();
 			//archivoBinarioClase.escribirGenero(karaoke);
 		} catch (IOException e) {
