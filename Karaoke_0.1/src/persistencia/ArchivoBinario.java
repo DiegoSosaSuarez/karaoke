@@ -57,7 +57,7 @@ public class ArchivoBinario {
 		objectInputStream.close();
 	}
 	public void leerAutores() throws IOException, ClassNotFoundException {
-		file = new File("./src/Files/Generos.ds");
+		file = new File("./src/Files/Autores.ds");
 		fileInputStream = new FileInputStream(file);
 		objectInputStream = new ObjectInputStream(fileInputStream);
 		Genero genero;
@@ -68,6 +68,8 @@ public class ArchivoBinario {
 		
 		objectInputStream.close();
 	}
+	
+	
 	
 	public static void main(String[] args) throws ClassNotFoundException {
 		ArchivoBinario archivoBinarioClase = new ArchivoBinario();
