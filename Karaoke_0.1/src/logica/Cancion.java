@@ -13,6 +13,7 @@ public class Cancion implements Serializable{
 	private int duracion;
 	private ArrayList<String> letra;
 	private int numeroLineaActual;
+	private Autor autor;
 	private String imagen;
 	
 	
@@ -20,6 +21,9 @@ public class Cancion implements Serializable{
 		super();
 	}
 
+	public void agregarLetra(){
+		
+	}
 
 	public String getNombre() {
 		return nombre;

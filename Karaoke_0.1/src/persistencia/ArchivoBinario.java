@@ -1,5 +1,7 @@
 package persistencia;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -8,7 +10,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 
 import logica.Autor;
 import logica.Cancion;
@@ -24,6 +28,8 @@ public class ArchivoBinario {
 	private ObjectOutputStream objectOutputStream;
 	private File file;
 
+	private Genero autor;
+	
 	public ArchivoBinario() {
 		
 	}
@@ -69,10 +75,12 @@ public class ArchivoBinario {
 		objectInputStream.close();
 	}
 	
-	
-	
 	public static void main(String[] args) throws ClassNotFoundException {
-		ArchivoBinario archivoBinarioClase = new ArchivoBinario();
+
+	}
+	
+	public void jFramePrueba(){
+ArchivoBinario archivoBinarioClase = new ArchivoBinario();
 		
 		Karaoke karaoke = new Karaoke();
 		karaoke.agregarGenero(new Genero("Vallenato"));
@@ -83,7 +91,7 @@ public class ArchivoBinario {
 		karaoke.agregarGenero(new Genero("Reggue"));
 		karaoke.agregarGenero(new Genero("Cumbia"));
 		
-		Genero autor = new Genero();
+		autor = new Genero();
 		autor.agregarAutor(new Autor("Juan Fernando Velasco", karaoke.getListsGeneros().get(3)));
 		autor.agregarAutor(new Autor("Jorge Velosa", karaoke.getListsGeneros().get(4)));
 		autor.agregarAutor(new Autor("Andres Cepeda", karaoke.getListsGeneros().get(3)));
@@ -92,17 +100,47 @@ public class ArchivoBinario {
 		autor.agregarAutor(new Autor("Shakira", karaoke.getListsGeneros().get(4)));
 		autor.agregarAutor(new Autor("Juanes", karaoke.getListsGeneros().get(4)));
 		autor.agregarAutor(new Autor("Diomedes Diaz", karaoke.getListsGeneros().get(0)));
+		autor.agregarAutor(new Autor("Mikey Taveras", karaoke.getListsGeneros().get(2)));
+		autor.agregarAutor(new Autor("Joe Arroyo", karaoke.getListsGeneros().get(2)));
+		autor.agregarAutor(new Autor("Grupo Niche", karaoke.getListsGeneros().get(2)));
+		autor.agregarAutor(new Autor("Marc Anthony", karaoke.getListsGeneros().get(2)));
 		
-		
-		try {
-//			archivoBinarioClase.escribirGenero(karaoke);
-//			archivoBinarioClase.escribirAutor(autor);
-			archivoBinarioClase.leerAutores();
+//		try {
+////			archivoBinarioClase.escribirGenero(karaoke);
+////			archivoBinarioClase.escribirAutor(autor);
+//			archivoBinarioClase.leerAutores();
 //			archivoBinarioClase.leerGeneros();
-		} catch (IOException e) {
-			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+		
+		JFrame frame = new JFrame();
+		frame.setSize(600, 500);
+		JComboBox<String> comboBoxGenero = new JComboBox<>();
+		for (Genero genero : karaoke.getListsGeneros()) {
+			comboBoxGenero.addItem(genero.getNombre());
 		}
+		comboBoxGenero.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JComboBox<String> comboBoxAutores = new JComboBox<>();
+				for (Autor autorG : autor.getListaAutores()) {
+					
+					System.out.println(autorG.getNombre()+" --- "+autorG.getGenero().getNombre());
+				}
+				
+			}
+		});
+		frame.add(comboBoxGenero);
+		
+		
+		
+		frame.setVisible(true);
+		
 	}
-	
+	public void prueba(){
+		
+	}
 	
 }

@@ -22,13 +22,11 @@ public class Genero implements Serializable{
 	public Genero(String nombre) {
 		super();
 		this.nombre = nombre;
-		
 	}
 
 	public void agregarAutor(Autor autor){
 		listaAutores.add(autor);
 	}
-
 
 	public String getNombre() {
 		return nombre;
