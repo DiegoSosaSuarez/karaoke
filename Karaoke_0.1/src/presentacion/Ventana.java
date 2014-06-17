@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
+import logica.Genero;
 import logica.GenerosEnum;
 
 public class Ventana extends JFrame {
