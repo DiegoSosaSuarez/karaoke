@@ -17,9 +17,8 @@ public class Ventana extends JFrame {
 		setLocationRelativeTo(null);
 		setLayout(new BorderLayout());
 		jPanelGeneros = new JPanelGeneros();
-		add(jPanelGeneros, BorderLayout.NORTH);
+		add(jPanelGeneros, BorderLayout.CENTER);
 		setVisible(true);
-		
 	}
 	
 	public static void main(String[] args) {
