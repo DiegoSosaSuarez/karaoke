@@ -2,48 +2,64 @@ package persistencia;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 public class ArchivoPlano {
 
-	private String linea;
+	public static void crearArchivoLetra(String letra, String ruta)
+			throws IOException {
 
-	public void datosPersonas() throws Exception {
-		JFileChooser jf = new JFileChooser();
-		int opcion = jf.showOpenDialog(null);
-
-		if (opcion == JFileChooser.APPROVE_OPTION) {
-			File archivo = jf.getSelectedFile();
-			try {
-				FileReader fr = new FileReader(archivo);
-				BufferedReader br = new BufferedReader(fr);
-				while ((linea = br.readLine()) != null) {
-					System.out.println(linea);
-				}
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-				JOptionPane.showMessageDialog(null, "Error","No se encuentra el archivo",JOptionPane.ERROR_MESSAGE);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		} else {
-			System.out.println("Error");
-		}
+		File archivo = new File(ruta);
+		FileWriter fileWriter = null;
+		fileWriter = new FileWriter(archivo);
+		fileWriter.write(letra);
+		fileWriter.close();
 	}
-	
-	public static void main(String[] args) {
-		ArchivoPlano archivoPlano  = new ArchivoPlano();
+
+	public static ArrayList<String> leerArchivoLetra(String ruta) {
+		File archivo = new File(ruta);
+		FileReader fileReader = null;
+
+		ArrayList<String> letra = new ArrayList<String>();
+
 		try {
-			archivoPlano.datosPersonas();
-		} catch (Exception e) {
+			fileReader = new FileReader(archivo);
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		BufferedReader bufferedReader = new BufferedReader(fileReader);
+		String linea = null;
+		try {
+			while ((linea = bufferedReader.readLine()) != null) {
+				letra.add(linea);
+			}
+			return letra;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		try {
+			fileReader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public static void main(String[] args) {
+		// try {
+		// crearArchivoLetra("asdjkalsdjalskdjas",
+		// "C:/SPB_Data/git/karaoke/Karaoke_0.1/src/archivoPlano/hola.txt");
+		// } catch (IOException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		ArchivoPlano
+				.leerArchivoLetra("C:/SPB_Data/git/karaoke/Karaoke_0.1/src/archivoPlano/cancion.txt");
+
 	}
 }
