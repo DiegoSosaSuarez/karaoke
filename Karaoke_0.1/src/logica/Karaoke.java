@@ -1,7 +1,10 @@
 package logica;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import persistencia.ArchivoPlano;
 
 public class Karaoke implements Serializable {
 
@@ -11,11 +14,21 @@ public class Karaoke implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Cancion cancionActual;
 	private ArrayList<Genero> listsGeneros;
-	
+	private ArrayList<Cancion> listaCanciones;
 	
 	public Karaoke() {
-		
+		listaCanciones = new ArrayList<>();
 		listsGeneros = new ArrayList<>();
+	}
+	
+	public void agregarCancion(String letra, Cancion nuevaCancion, String ruta){
+		try {
+			ArchivoPlano.crearArchivoLetra(letra, ruta + ".txt");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		listaCanciones.add(nuevaCancion);
 	}
 	
 	public void agregarGenero(Genero genero){

@@ -50,6 +50,12 @@ public class ArchivoPlano {
 		return null;
 	}
 
+	public static void mostarArrayLetra(ArrayList<String> arrayLetra) {
+		for (String letra : arrayLetra) {
+			System.out.println(letra);
+		}
+	}
+
 	public static void main(String[] args) {
 		// try {
 		// crearArchivoLetra("asdjkalsdjalskdjas",
@@ -58,8 +64,6 @@ public class ArchivoPlano {
 		// // TODO Auto-generated catch block
 		// e.printStackTrace();
 		// }
-		ArchivoPlano
-				.leerArchivoLetra("C:/SPB_Data/git/karaoke/Karaoke_0.1/src/archivoPlano/cancion.txt");
-
+		mostarArrayLetra(leerArchivoLetra("C:/Users/SALA/git/karaoke/Karaoke_0.1/src/archivoPlano/cancion.txt"));
 	}
 }

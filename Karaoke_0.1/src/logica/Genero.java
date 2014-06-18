@@ -16,8 +16,6 @@ public class Genero implements Serializable{
 	public Genero() {
 		listaAutores = new ArrayList<>();
 	}
-
-	
 	
 	public Genero(String nombre) {
 		super();

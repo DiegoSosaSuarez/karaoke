@@ -109,7 +109,7 @@ public class ArchivoBinario {
 		karaoke.agregarGenero(new Genero("Reguetón"));
 		karaoke.agregarGenero(new Genero("Samba"));
 		karaoke.agregarGenero(new Genero("Electrónica"));
-		karaoke.agregarGenero(new Genero("Metálica"));
+		karaoke.agregarGenero(new Genero("Metal"));
 		
 		
 		autor = new Genero();

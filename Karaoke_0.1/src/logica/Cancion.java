@@ -10,15 +10,21 @@ public class Cancion implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private String nombre;
-	private int duracion;
-	private ArrayList<String> letra;
-	private int numeroLineaActual;
-	private Autor autor;
 	private String imagen;
+	private Genero genero;
+	private Autor autor;
+	private int duracion;
+	private int numeroLineaActual;
+	private ArrayList<String> letra;
 	
 	
 	public Cancion() {
 		super();
+	}
+
+	public Cancion(String nombre) {
+		super();
+		this.nombre = nombre;
 	}
 
 	public void agregarLetra(){
