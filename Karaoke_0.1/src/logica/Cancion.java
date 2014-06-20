@@ -17,14 +17,14 @@ public class Cancion implements Serializable{
 	private int numeroLineaActual;
 	private ArrayList<String> letra;
 	
-	
 	public Cancion() {
 		super();
 	}
 
-	public Cancion(String nombre) {
+	public Cancion(String nombre, Autor autor) {
 		super();
-		this.nombre = nombre;
+		this.nombre=nombre;
+		this.autor=autor;
 	}
 
 	public void agregarLetra(){

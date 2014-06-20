@@ -11,13 +11,16 @@ import logica.GenerosEnum;
 public class Ventana extends JFrame {
 
 	private JPanelGeneros jPanelGeneros;
+	private ManejaEventos manejaEventos;
 	
 	public Ventana() {
 		setTitle("Karaoke");
 		setSize(1000, 600);
 		setLocationRelativeTo(null);
 		setLayout(new BorderLayout());
-		jPanelGeneros = new JPanelGeneros();
+		manejaEventos = new ManejaEventos();
+		jPanelGeneros = new JPanelGeneros(manejaEventos);
+		manejaEventos.llamarJPanelGenero(jPanelGeneros);
 		add(jPanelGeneros, BorderLayout.CENTER);
 		setVisible(true);
 	}

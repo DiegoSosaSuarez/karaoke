@@ -22,6 +22,11 @@ public class Autor implements Serializable{
 		super();
 		this.genero=genero;
 		this.nombre = nombre;
+		listaCanciones = new ArrayList<>();
+	}
+	
+	public void agregarCancion(Cancion cancion, Autor autor){
+		listaCanciones.add(cancion);
 	}
 
 	public String getNombre() {

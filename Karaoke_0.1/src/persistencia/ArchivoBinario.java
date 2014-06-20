@@ -29,6 +29,7 @@ public class ArchivoBinario {
 	private File file;
 
 	private ArrayList<String> listAutoresEscogidos;
+	private ArrayList<String> listTitulosCanciones;
 	
 	private Genero autor;
 	
@@ -79,7 +80,19 @@ public class ArchivoBinario {
 		}
 		objectInputStream.close();
 	}
-	
+	public void leerTitulosCanciones(int posicion) throws IOException, ClassNotFoundException {
+		file = new File("./Canciones");
+		fileInputStream = new FileInputStream(file);
+		objectInputStream = new ObjectInputStream(fileInputStream);
+		Autor autor;
+		listTitulosCanciones = new ArrayList<>();
+		autor = (Autor)objectInputStream.readObject();
+		for (Cancion cancion : autor.getListaCanciones()) {
+				System.out.println(cancion.getNombre());
+				listTitulosCanciones.add(cancion.getNombre());
+		}
+		objectInputStream.close();
+	}
 //	public static void main(String[] args) throws ClassNotFoundException {
 //	
 //		ArchivoBinario archivoBinario = new ArchivoBinario();
@@ -149,6 +162,14 @@ public class ArchivoBinario {
 
 	public void setListAutoresEscogidos(ArrayList<String> listAutoresEscogidos) {
 		this.listAutoresEscogidos = listAutoresEscogidos;
+	}
+
+	public ArrayList<String> getListTitulosCanciones() {
+		return listTitulosCanciones;
+	}
+
+	public void setListTitulosCanciones(ArrayList<String> listTitulosCanciones) {
+		this.listTitulosCanciones = listTitulosCanciones;
 	}
 	
 	

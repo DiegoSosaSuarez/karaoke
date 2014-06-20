@@ -72,8 +72,8 @@ public class DialogoAgregarCancion extends JDialog implements ActionListener {
 			int opcion = jFileChooser.showSaveDialog(this);
 			if (opcion == JFileChooser.APPROVE_OPTION) {
 				String ruta = jFileChooser.getSelectedFile().getPath();
-				Cancion cancion = new Cancion(txNombre.getText());
-				karaoke.agregarCancion(txLetra.getText(), cancion, ruta);
+//				Cancion cancion = new Cancion(txNombre.getText());
+//				karaoke.agregarCancion(txLetra.getText(), cancion, ruta);
 			}
 			break;
 
